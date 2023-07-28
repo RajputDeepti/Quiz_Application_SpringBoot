@@ -1,6 +1,6 @@
 package com.Spring.Quiz_Application.controller;
 
-import com.Spring.Quiz_Application.Dto.UserDto;
+import com.Spring.Quiz_Application.Dto.SignUpPageDto;
 import com.Spring.Quiz_Application.repository.CandidateRepository;
 import com.Spring.Quiz_Application.repository.HostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,5 +16,13 @@ public class LoginController {
     @Autowired
     private HostRepository hostRepository;
 
+<<<<<<< HEAD
 
+=======
+    @GetMapping("/login")
+    public String showLoginForm(Model model) {
+        model.addAttribute("user", new SignUpPageDto()); // Create a SignUpPageDto class to hold the form data
+        return "LoginForm";
+    }
+>>>>>>> 36b46c4eb6f6f8bb53c19e46ecf413e88f86a302
 }
