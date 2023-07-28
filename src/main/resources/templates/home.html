@@ -9,16 +9,8 @@
 </head>
 <body>
 <h2>Welcome to Quizy</h2>
-<form >
 
-
-    <button href="@{/SignupForm}">
-        Signup
-    </button>
-
-    <button href="@{/LoginForm}">
-        Login
-    </button>
-</form>
+<a th:href="@{/login}"><button>Login</button></a>
+<a th:href="@{/register}"><button>Signup</button></a>
 </body>
 </html>

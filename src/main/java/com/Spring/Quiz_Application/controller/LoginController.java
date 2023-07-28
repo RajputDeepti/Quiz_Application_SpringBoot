@@ -16,9 +16,5 @@ public class LoginController {
     @Autowired
     private HostRepository hostRepository;
 
-    @GetMapping("/login")
-    public String showLoginForm(Model model) {
-        model.addAttribute("user", new UserDto()); // Create a UserDto class to hold the form data
-        return "LoginForm";
-    }
+
 }
