@@ -19,12 +19,10 @@ import org.springframework.web.bind.annotation.PostMapping;
     @Autowired
     private RegistrationService registrationService;
 
-
-
     @PostMapping("/registration")
     public String processRegistrationForm(@ModelAttribute("user") SignUpPageDto signUpPageDto) {
         registrationService.register(signUpPageDto);
-        return "home";
+        return "redirect:/register?success";
     }
 }
 
