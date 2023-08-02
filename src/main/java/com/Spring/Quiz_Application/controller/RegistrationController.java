@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
     @PostMapping("/registration")
     public String processRegistrationForm(@ModelAttribute("user") @Valid SignUpPageDto signUpPageDto, BindingResult result) {
         if (result.hasErrors()) {
-            System.out.println("ERROR "+result.toString());
+            System.out.println("ERROR: "+result.toString());
          return "SignupForm";
         }
         registrationService.register(signUpPageDto);
