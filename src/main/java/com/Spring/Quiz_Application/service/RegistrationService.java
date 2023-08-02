@@ -5,6 +5,7 @@ import com.Spring.Quiz_Application.entity.Candidate;
 import com.Spring.Quiz_Application.entity.Host;
 import com.Spring.Quiz_Application.repository.CandidateRepository;
 import com.Spring.Quiz_Application.repository.HostRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class RegistrationService {
     @Autowired
     private HostRepository hostRepository;
 
-    public String register(SignUpPageDto signUpPageDto)
+    public String register(@Valid SignUpPageDto signUpPageDto)
     {
         if ("candidate".equals(signUpPageDto.getRole())) {
             Candidate candidate = new Candidate();
