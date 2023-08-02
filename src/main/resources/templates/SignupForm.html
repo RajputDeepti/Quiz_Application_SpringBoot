@@ -37,8 +37,13 @@
                 <div class="form-group">
                     <label class="control-label">Role:</label>
                     <select class="form-control" th:field="*{role}">
+<<<<<<< HEAD
                         <option value="candidate">Candidate</option>
                         <option value="host">Host</option>
+=======
+                        <option value="ROLE_CANDIDATE">CANDIDATE</option>
+                        <option value="ROLE_HOST">HOST</option>
+>>>>>>> 747aeb8d00a0f0c2ea1ad351ad76cec6b9c3d8f6
                     </select>
                     <div class="text-danger" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
                 </div>
