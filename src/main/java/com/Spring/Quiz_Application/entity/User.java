@@ -12,13 +12,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Candidate_Details")
-public class Candidate {
+@Table(name = "User_Details")
+public class User {
     @Id
     @GeneratedValue
-    private long candidateId;
-    private String email;
+    private long userId;
     private String name;
+    private String email;
     private String password;
     private String role;
     private boolean active;
