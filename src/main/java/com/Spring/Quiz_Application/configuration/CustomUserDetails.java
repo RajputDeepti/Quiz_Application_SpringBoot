@@ -24,7 +24,6 @@ public class CustomUserDetails implements UserDetails {
     @Override
     public String getPassword() {
         return user.getPassword();
-
     }
 
     @Override

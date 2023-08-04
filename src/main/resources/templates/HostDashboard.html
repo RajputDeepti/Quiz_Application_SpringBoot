@@ -3,9 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+    .continue-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: rgb(251,105,98) ;
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+.continue-button:hover {
+    background-color: #0056b3;
+}
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: rgb(251,105,98);
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(254,205,165);
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.content {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 10 4px 10px rgba(0, 0, 0, 0.1);
+    border: 5px solid #000000;
+}
+    </style>
 </head>
 <body>
-<h3>This is page for Host Sevices</h3>
+<div class="container">
+    <div class="content">
+<h1>HOST DASHBOARD</h1>
+<a  th:href="@{/createQuiz}" class="continue-button">Create Quiz</a><br><br>
+<a  th:href="@{/quiz/{id}}" class="continue-button">Get Quiz By Id</a><br><br>
+<a  th:href="@{/fetchAll}" class="continue-button">Get All Quiz</a><br><br>
 <form action="#" th:action="@{/logout}" method="post">
 <input type="submit" value="Logout">
 
@@ -13,5 +60,7 @@
     <i class="failed"> Logged Out</i>
 </div>
     </form>
+    </div>
+</div>
 </body>
 </html>
