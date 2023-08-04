@@ -16,27 +16,37 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long quesId;
 
+
+
     @NotBlank
     private String question;
 
+
+
     @NotBlank
-    @Column(unique = true)
     private String option1;
 
+
+
     @NotBlank
-    @Column(unique = true)
     private String option2;
 
-    @NotBlank
-    @Column(unique = true)
-    private String option3;
+
 
     @NotBlank
-    @Column(unique = true)
+    private String option3;
+
+
+
+    @NotBlank
     private String option4;
+
+
 
     @NotBlank
     private String ans;
+
+
 
     @ManyToOne
     @JoinColumn(name = "quiz_id")

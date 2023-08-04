@@ -15,7 +15,7 @@ public class CreateQuizService {
     private QuestionRepository questionRepository;
     public void quizCreate(Quiz quiz) {
         Quiz quiz1= new Quiz();
-        quiz1.setKey(quiz.getKey());
+        quiz1.setQuizKey(quiz.getQuizKey());
         quizRepository.save(quiz1);
     }
 

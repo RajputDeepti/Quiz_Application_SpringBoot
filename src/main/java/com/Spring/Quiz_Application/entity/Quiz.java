@@ -10,17 +10,22 @@ import java.util.List;
 @Entity
 @Table(name = "Quiz")
 @Data
-@AllArgsConstructor
+@AllArgsConstructor(staticName = "build")
 @NoArgsConstructor
 public class Quiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+
+
     @NotBlank
-    @Column(unique = true, length =10)
-    private String key;
+    //@Column(unique = true, length =10)
+    private String quizKey; // Changed the column name to "quizKey"
+
+
 
     @OneToMany(mappedBy = "quiz")
     private List<Question> questions;
+
 }

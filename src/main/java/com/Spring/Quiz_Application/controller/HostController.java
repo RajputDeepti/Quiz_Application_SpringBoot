@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -36,5 +37,11 @@ public class HostController {
     public ResponseEntity<List<Quiz>> getAllQuiz(){
         List<Quiz> quiz= hostService.getAllQuiz();
         return ResponseEntity.ok(quiz);
+    }
+
+    @GetMapping("/createQuiz")
+    public ModelAndView showCreateQuizForm(@ModelAttribute("quiz")Quiz quiz) {
+
+        return new ModelAndView("CreateQuiz");
     }
 }

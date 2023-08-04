@@ -37,10 +37,7 @@ public class HomeController {
     public ModelAndView showLoginForm(Model model) {
         return new ModelAndView("LoginForm");
     }
-    @GetMapping("/createQuiz")
-    public ModelAndView showCreateQuizForm(@ModelAttribute("quiz")Quiz quiz) {
-        return new ModelAndView("CreateQuiz");
-    }
+
     @GetMapping("/addQuestion")
     public ModelAndView showAddQuestionForm(Model model){
         model.addAttribute("question",new Question());
