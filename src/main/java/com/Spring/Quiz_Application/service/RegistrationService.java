@@ -20,7 +20,7 @@ public class RegistrationService {
     private PasswordEncoder passwordEncoder;
     public String register(SignUpPageDto signUpPageDto)
     {
-<<<<<<< HEAD
+
        User user = new User();
 
        user.setEmail(signUpPageDto.getEmail());
@@ -64,16 +64,6 @@ public class RegistrationService {
 
 }
 
-=======
-        User user = new User();
-        user.setActive(true);
-        user.setEmail(signUpPageDto.getEmail());
-        user.setName(signUpPageDto.getName());
-        user.setPassword(passwordEncoder.encode(signUpPageDto.getPassword()));
-        user.setRole(signUpPageDto.getRole());
-        userRepository.save(user);
-        // Redirect to a success page or login page
-        return "home";
-    }
-}
->>>>>>> 006a8b5436a64585d5489f7cd2b61227fd2e6bde
+
+
+

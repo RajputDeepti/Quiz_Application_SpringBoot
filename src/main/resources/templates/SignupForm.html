@@ -87,88 +87,54 @@
         .form-check-input {
             margin-right: 8px;
         }
-
-         .continue-button {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: rgb(251, 105, 98);
-            color: #ffffff;
-            font-size: 16px;
-            text-decoration: none;
-            border-radius: 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        .continue-button:hover {
-            background-color: #0056b3;
-        }
-
-        span {
-            font-size: 16px;
-            margin-left: 10px;
-        }
     </style>
 </head>
 <body>
 <div class="container">
-<<<<<<< HEAD
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div th:if="${param.success}">
                 <div class="alert alert-info">
                     Successfully registered. We have sent a verification link on your mail, please verify your mail to activate your account
                 </div>
-
-            </div> <h2>User Registration</h2>
-            <form th:action="@{/registration}" th:object="${user}" method="post" >
-                <div class="form-group">
-                    <label class="control-label" for="name">Name:</label>
-                    <input id="name" class="form-control" type="text" th:field="*{name}" required autofocus="autofocus"/>
-                    <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
-                </div>
-=======
-    <div class="content">
-        <h2>User Registration</h2>
-        <form th:action="@{/registration}" th:object="${user}" method="post">
->>>>>>> 006a8b5436a64585d5489f7cd2b61227fd2e6bde
-
-            <div class="form-group">
-                <label class="control-label" for="name">Name:</label>
-                <input id="name" class="form-control" type="text" th:field="*{name}" required autofocus="autofocus"/>
-                <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
             </div>
-
-            <div class="form-group">
-                <label class="control-label" for="email">Email:</label>
-                <input id="email" class="form-control" type="text" th:field="*{email}" required autofocus="autofocus"/>
-                <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            <div class="content">
+                <h2>User Registration</h2>
+                <form th:action="@{/registration}" th:object="${user}" method="post">
+                    <div class="form-group">
+                        <label class="control-label" for="name">Name:</label>
+                        <input id="name" class="form-control" type="text" th:field="*{name}" required autofocus="autofocus"/>
+                        <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="email">Email:</label>
+                        <input id="email" class="form-control" type="text" th:field="*{email}" required autofocus="autofocus"/>
+                        <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">Password:</label>
+                        <input id="password" class="form-control" type="password" th:field="*{password}" required autofocus="autofocus"/>
+                        <div class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Role:</label>
+                        <select class="form-control" th:field="*{role}">
+                            <option value="ROLE_CANDIDATE">CANDIDATE</option>
+                            <option value="ROLE_HOST">HOST</option>
+                        </select>
+                        <div class="text-danger" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" required autofocus="autofocus">
+                        <label class="form-check-label" for="exampleCheck1">Agree terms and conditions</label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="continue-button">Register</button>
+                        <span>Already registered? <a href="/" th:href="@{/signin}" class="btn btn-success">Login here</a></span>
+                    </div>
+                </form>
             </div>
-
-            <div class="form-group">
-                <label class="control-label" for="password">Password:</label>
-                <input id="password" class="form-control" type="password" th:field="*{password}" required autofocus="autofocus"/>
-                <div class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label">Role:</label>
-                <select class="form-control" th:field="*{role}">
-                    <option value="ROLE_CANDIDATE">CANDIDATE</option>
-                    <option value="ROLE_HOST">HOST</option>
-                </select>
-                <div class="text-danger" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
-            </div>
-
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1" required autofocus="autofocus">
-                <label class="form-check-label" for="exampleCheck1">Agree terms and conditions</label>
-            </div>
-
-            <div class="form-group">
-                <button type="submit" class="continue-button">Register</button>
-                <span>Already registered? <a href="/" th:href="@{/login}" class="btn btn-success">Login here</a></span>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 </body>

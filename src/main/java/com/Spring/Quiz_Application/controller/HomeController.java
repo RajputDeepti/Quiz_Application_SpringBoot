@@ -5,7 +5,7 @@ package com.Spring.Quiz_Application.controller;
 
 
 import com.Spring.Quiz_Application.Dto.SignUpPageDto;
-<<<<<<< HEAD
+
 import com.Spring.Quiz_Application.entity.User;
 import com.Spring.Quiz_Application.repository.UserRepository;
 import com.Spring.Quiz_Application.utils.CustomMailSender;
@@ -18,14 +18,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-=======
 import com.Spring.Quiz_Application.entity.Question;
-import com.Spring.Quiz_Application.entity.Quiz;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
->>>>>>> 006a8b5436a64585d5489f7cd2b61227fd2e6bde
+
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -34,25 +29,19 @@ import java.util.UUID;
 
 @RestController
 public class HomeController {
-<<<<<<< HEAD
+
     @Autowired
     private CustomMailSender mailSender;
     @Autowired
     private JavaMailSender javaMailSender;
-
-=======
->>>>>>> 006a8b5436a64585d5489f7cd2b61227fd2e6bde
     @GetMapping("/register")
     public  ModelAndView showRegistrationForm(Model model) {
         model.addAttribute("user", new SignUpPageDto()); // Create a SignUpPageDto class to hold the form data
         return new ModelAndView("SignupForm");
     }
-<<<<<<< HEAD
 
     @GetMapping({"/","/home"})
-=======
-    @GetMapping("/home")
->>>>>>> 006a8b5436a64585d5489f7cd2b61227fd2e6bde
+
     public ModelAndView homeHandler(){
         return new ModelAndView("home");
     }

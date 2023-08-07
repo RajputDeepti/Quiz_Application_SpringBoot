@@ -6,21 +6,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
           crossorigin="anonymous">
-<<<<<<< HEAD
 
-</head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>Login</h2>
-            <form th:action="@{/do-login}" th:object="${user}" method="post">
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-                <div class="mb-3 form-check">
-                    <div th:if="${param.error}" class="alert alert-danger">
-                         Incorrect email or password
-                    </div>
-=======
+
     <style>
         body {
             margin: 0;
@@ -82,13 +69,13 @@
 <div class="container">
     <div class="content">
         <h2>Login</h2>
-        <form th:action="@{/signin}" th:object="${user}" method="post">
+        <form th:action="@{/do-login}" th:object="${user}" method="post">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             <div class="mb-3 form-check">
                 <div th:if="${param.error}" class="alert alert-danger failed">
                     Incorrect email or password
                 </div>
->>>>>>> 006a8b5436a64585d5489f7cd2b61227fd2e6bde
+
 
                 <div th:if="${param.logout}" class="alert alert-danger failed">
                     You have been logged out
@@ -99,14 +86,12 @@
                 <label class="control-label" for="password">Password:</label>
                 <input type="password" id="password" name="password" class="form-control" placeholder="Password" required><br/>
                 <div class="form-group">
-<<<<<<< HEAD
                     <button type="submit" class="btn btn-success">Login</button>
-                    <span>Not registered? <a href="/" th:href="@{/register}"> Register here </a></span>
+
                     <span>Forgot password? <a th:href="@{/forgot-password}">Reset Password</a></span>
-=======
-                    <button type="submit" class="continue-button">Login</button>
+
                     <span>Not registered? <a href="/" th:href="@{/register}" class="btn btn-success">Register here</a></span>
->>>>>>> 006a8b5436a64585d5489f7cd2b61227fd2e6bde
+
                 </div>
             </div>
         </form>
