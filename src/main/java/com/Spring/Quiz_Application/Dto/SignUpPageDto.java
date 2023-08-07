@@ -6,9 +6,12 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+<<<<<<< HEAD
 import lombok.NonNull;
 import org.hibernate.validator.constraints.UniqueElements;
 
+=======
+>>>>>>> 006a8b5436a64585d5489f7cd2b61227fd2e6bde
 
 @Data
 @NoArgsConstructor

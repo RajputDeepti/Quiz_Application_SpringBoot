@@ -1,5 +1,4 @@
 package com.Spring.Quiz_Application.configuration;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,6 +41,7 @@ public class SecurityConfiguration{
                 .exceptionHandling(e->e.accessDeniedHandler(accessDeniedHandler()));// Set the custom AccessDeniedHandler
         return http.build();
     }
+<<<<<<< HEAD
 
     private AccessDeniedHandler accessDeniedHandler() {
         return (request, response, accessDeniedException) -> {
@@ -53,3 +53,6 @@ public class SecurityConfiguration{
     }
 
         }
+=======
+}
+>>>>>>> 006a8b5436a64585d5489f7cd2b61227fd2e6bde
