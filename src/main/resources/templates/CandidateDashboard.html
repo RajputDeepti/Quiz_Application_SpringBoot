@@ -4,8 +4,21 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        .failed{
-        color:red ;}
+
+.continue-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: rgb(251,105,98) ;
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.continue-button:hover {
+    background-color: #0056b3;
+}
     </style>
 </head>
 <body>
@@ -13,10 +26,12 @@
 <form action="#" th:action="@{/logout}" method="post">
     <input type="submit" value="Logout">
 
+
     <div th:if="${param.logout}">
         <i class="failed"> Logged Out</i>
     </div>
 
 </form>
+<div><a  th:href="@{/show-Change-Password}" class="continue-button">Change Password</a></div>
 </body>
 </html>

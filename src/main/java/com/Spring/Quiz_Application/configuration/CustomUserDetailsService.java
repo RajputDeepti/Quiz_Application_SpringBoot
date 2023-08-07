@@ -14,8 +14,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     UserRepository repository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-      Optional<User> user= Optional.ofNullable(repository.findByEmail(username));
-     return user.map(CustomUserDetails::new).orElseThrow(()->new UsernameNotFoundException("This User does not Exist"));
+        Optional<User> user= Optional.ofNullable(repository.findByEmail(username));
+        return user.map(CustomUserDetails::new).orElseThrow(()->new UsernameNotFoundException("This User does not Exist"));
 
     }
 }

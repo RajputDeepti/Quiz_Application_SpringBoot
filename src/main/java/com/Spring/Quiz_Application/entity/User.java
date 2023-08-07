@@ -22,4 +22,6 @@ public class User {
     private String password;
     private String role;
     private boolean active;
+    private String verificationToken;
+    private String resetToken;
 }

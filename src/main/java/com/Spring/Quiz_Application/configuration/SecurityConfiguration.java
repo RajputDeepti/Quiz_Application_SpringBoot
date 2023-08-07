@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -27,13 +28,28 @@ public class SecurityConfiguration{
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests(configurer->configurer
-                        .requestMatchers("/home","/index","/register","/registration").permitAll()
+                        .requestMatchers("/","/home","/register","/registration","/reset-password",
+                                "/forgot-password",
+                                "/verify","/verificationSuccess","/verificationError","/verification?verification=true").permitAll()
                         .requestMatchers("/host/**").hasRole("HOST")
                         .requestMatchers("/candidate/**").hasRole("CANDIDATE")
-                        .anyRequest().authenticated()).formLogin(form->form.loginPage("/signin").defaultSuccessUrl("/home").permitAll())
-                .logout(logout->logout.permitAll());
-
+                        .anyRequest().authenticated())
+                        .formLogin(form->form.loginPage("/signin")
+                                .loginProcessingUrl("/do-login")
+//                                .failureUrl("/authenticationFailed")
+                                .defaultSuccessUrl("/").permitAll())
+                .logout(logout->logout.permitAll())
+                .exceptionHandling(e->e.accessDeniedHandler(accessDeniedHandler()));// Set the custom AccessDeniedHandler
         return http.build();
+    }
+
+    private AccessDeniedHandler accessDeniedHandler() {
+        return (request, response, accessDeniedException) -> {
+            // Handle the access denied scenario here
+            response.sendRedirect("/access-denied");
+        };// Set the custom access denied page URL
+
+
     }
 
         }

@@ -6,7 +6,8 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import lombok.NonNull;
+import org.hibernate.validator.constraints.UniqueElements;
 
 
 @Data
@@ -21,4 +22,8 @@ public class SignUpPageDto {
     private String password;
     @NotBlank
     private String role;
+    private String verificationToken;
+    private boolean active;
+
+
 }

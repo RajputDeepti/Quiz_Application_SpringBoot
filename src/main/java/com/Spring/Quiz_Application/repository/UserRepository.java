@@ -9,4 +9,7 @@ import org.springframework.data.repository.query.Param;
 public interface UserRepository extends JpaRepository<User, Long> {
   @Query("SELECT u FROM User u WHERE u.email = :email")
   public User findByEmail(@Param("email") String email);
+  User findByResetToken(String resetToken);
+
+  User findByVerificationToken(String verificationToken);
 }

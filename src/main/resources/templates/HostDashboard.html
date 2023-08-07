@@ -3,6 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+    .continue-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: rgb(251,105,98) ;
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.continue-button:hover {
+    background-color: #0056b3;
+}</style>
+
 </head>
 <body>
 <h3>This is page for Host Sevices</h3>
@@ -13,5 +29,6 @@
     <i class="failed"> Logged Out</i>
 </div>
     </form>
+<div><a  th:href="@{/show-Change-Password}" class="continue-button">Change Password</a></div>
 </body>
 </html>
