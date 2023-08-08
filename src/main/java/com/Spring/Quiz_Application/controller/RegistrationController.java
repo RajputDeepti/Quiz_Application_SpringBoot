@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,18 +28,28 @@ import org.springframework.web.bind.annotation.RequestParam;
         @Autowired
         private CustomMailSender mailSender;
     @PostMapping("/registration")
-    public String processRegistrationForm(@ModelAttribute("user") @Valid SignUpPageDto signUpPageDto, BindingResult result) {
+    public String processRegistrationForm(@ModelAttribute("user") @Valid SignUpPageDto signUpPageDto, Model model, BindingResult result) {
         if (result.hasErrors()) {
             System.out.println("ERROR: " + result.toString());
             return "SignupForm";
         }
+        if (registrationService.isEmailAlreadyRegistered(signUpPageDto.getEmail())) {
+            model.addAttribute("errorMessage", "Email is already registered.");
+            return "SignupForm";
+        }
 
 
-        registrationService.register(signUpPageDto);
+
+        String verificationToken = registrationService.register(signUpPageDto);
+        if (verificationToken != null) {
+            model.addAttribute("successMessage", "Successfully registered. We have sent a verification link to your email. Please verify your email to activate your account.");
+        } else {
+            model.addAttribute("errorMessage", "An error occurred during registration.");
+        }
 
 
 
-        return "redirect:/registration";
+        return "SignupForm";
 
     }
 

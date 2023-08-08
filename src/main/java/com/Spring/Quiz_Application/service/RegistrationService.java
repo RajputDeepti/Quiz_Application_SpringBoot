@@ -18,6 +18,10 @@ public class RegistrationService {
     private UserRepository userRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    public boolean isEmailAlreadyRegistered(String email) {
+        // Check if the email is already registered in the database
+        return userRepository.existsByEmail(email);
+    }
     public String register(SignUpPageDto signUpPageDto)
     {
 

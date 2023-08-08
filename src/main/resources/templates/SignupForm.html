@@ -93,10 +93,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <div th:if="${param.success}">
-                <div class="alert alert-info">
-                    Successfully registered. We have sent a verification link on your mail, please verify your mail to activate your account
-                </div>
+            <div th:if="${successMessage}" class="alert alert-info">
+                <p th:text="${successMessage}"></p>
+            </div>
+            <div th:if="${errorMessage}" class="alert alert-danger">
+                <p th:text="${errorMessage}"></p>
             </div>
             <div class="content">
                 <h2>User Registration</h2>
