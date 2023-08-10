@@ -22,11 +22,12 @@ public class HostService {
         quizRepository.save(quiz);
     }
 
-    public Quiz getQuizById(String key) {
+    public Quiz getQuizByQuizKey(String key) {
         return quizRepository.findById(key).orElse(null);
     }
 
     public List<Quiz> getAllQuiz() {
         return quizRepository.findAll();
     }
+
 }

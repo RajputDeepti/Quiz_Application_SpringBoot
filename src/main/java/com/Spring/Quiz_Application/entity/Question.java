@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Entity
 @Table(name = "Question")
 @Data
@@ -49,4 +52,12 @@ public class Question {
     @ManyToOne
     @JoinColumn(name = "quiz_key")
     private Quiz quiz;
+
+    public String getText() {
+        return question;
+    }
+
+    public List<String> getOptions() {
+        return Arrays.asList(option1, option2, option3, option4);
+    }
 }

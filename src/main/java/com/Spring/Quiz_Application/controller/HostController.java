@@ -1,5 +1,8 @@
 package com.Spring.Quiz_Application.controller;
 
+import com.Spring.Quiz_Application.Dto.OptionDto;
+import com.Spring.Quiz_Application.Dto.QuestionDto;
+import com.Spring.Quiz_Application.Dto.QuizWithQuestionsDto;
 import com.Spring.Quiz_Application.entity.Question;
 import com.Spring.Quiz_Application.entity.Quiz;
 import com.Spring.Quiz_Application.service.HostService;
@@ -10,6 +13,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -41,17 +49,39 @@ public class HostController {
         return new ModelAndView("redirect:/host/create-quiz?success");
     }
 
-    @GetMapping("/quiz/{id}")
-    public ResponseEntity<Quiz> getQuizById(@PathVariable String key){
-        Quiz quiz = hostService.getQuizById(key);
-
-        if(quiz !=null){
-            return ResponseEntity.ok(quiz);
-        }
-        else
-        {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping("/fetch-quiz-form")
+    public ModelAndView showGetQuizByIdForm(Model model) {
+        model.addAttribute("quizDto", null);
+        model.addAttribute("error", false);
+        return new ModelAndView("get_quiz_by_id_form");
     }
+
+    @GetMapping("/fetch-quiz-result")
+    public ModelAndView getQuizById(@RequestParam String quizId, Model model) {
+        Quiz quiz = hostService.getQuizByQuizKey(quizId);
+
+        if (quiz != null) {
+            List<QuestionDto> questionDtos = new ArrayList<>();
+            for (Question question : quiz.getQuestions()) {
+                List<OptionDto> optionDtos = new ArrayList<>();
+                optionDtos.add(new OptionDto(question.getOption1()));
+                optionDtos.add(new OptionDto(question.getOption2()));
+                optionDtos.add(new OptionDto(question.getOption3()));
+                optionDtos.add(new OptionDto(question.getOption4()));
+
+                questionDtos.add(new QuestionDto(question.getQuestion(), optionDtos, question.getAns()));
+            }
+
+
+            model.addAttribute("quizDto", new QuizWithQuestionsDto(quiz.getQuizKey(), questionDtos));
+            model.addAttribute("error", false);
+        } else {
+            model.addAttribute("quizDto", null);
+            model.addAttribute("error", true);
+        }
+
+        return new ModelAndView("get_quiz_by_id_form");
+    }
+
 
 }
