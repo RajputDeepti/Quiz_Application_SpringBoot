@@ -26,11 +26,10 @@ public class CandidateController {
     public ModelAndView showAttemptQuizForm(@RequestParam("quizKey") String quizKey, Model model) {
         Quiz quiz = quizService.getQuizByQuizKey(quizKey);
         if (quiz == null) {
-            // Handle the case where the quiz doesn't exist
             return new ModelAndView("quiz_not_found");
         }
         for (Question question : quiz.getQuestions()) {
-            question.setSelectedOption(null); // Initialize selectedOption property
+            question.setSelectedOption(null); 
         }
         model.addAttribute("quizKey", quizKey);
         model.addAttribute("quiz", quiz);
@@ -39,12 +38,6 @@ public class CandidateController {
 
     @PostMapping("/submit-quiz")
     public ModelAndView submitQuiz(@ModelAttribute("quiz") Quiz quiz) {
-        // You can process the submitted quiz here
-        // For example, calculate the score, evaluate answers, etc.
-
-        // Assuming you have a service method to handle quiz submission
-        //quizService.submitQuiz(quiz);
-
         return new ModelAndView("quiz_submitted");
     }
 
