@@ -26,6 +26,7 @@ public class HostController {
     @Autowired
     private HostService hostService;
     @GetMapping("/create-quiz")
+    
     public ModelAndView showCreateQuizForm(Model model) {
         Quiz quiz = new Quiz();
         for (int i = 0; i < 10; i++) {
@@ -38,7 +39,7 @@ public class HostController {
     @PostMapping("/create-quiz")
     public ModelAndView createQuiz(Quiz quiz) {
         for (Question question : quiz.getQuestions()) {
-            question.setQuiz(quiz); // Set the quiz for each question
+            question.setQuiz(quiz); 
         }
 
         hostService.createQuiz(quiz);
