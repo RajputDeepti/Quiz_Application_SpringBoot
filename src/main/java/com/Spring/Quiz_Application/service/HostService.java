@@ -26,8 +26,5 @@ public class HostService {
         return quizRepository.findById(key).orElse(null);
     }
 
-    public List<Quiz> getAllQuiz() {
-        return quizRepository.findAll();
-    }
 
 }
