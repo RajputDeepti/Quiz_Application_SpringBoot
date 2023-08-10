@@ -36,12 +36,12 @@ public class RegistrationService {
         signUpPageDto.setVerificationToken(verificationToken);
         user.setVerificationToken(signUpPageDto.getVerificationToken());
         user.setActive(signUpPageDto.isActive());
-        // Set the active status to false during registration
+
 
         userRepository.save(user);
         sendVerificationEmail(signUpPageDto.getEmail(), verificationToken);
 
-        // Redirect to a success page or login page
+
         return "home";
     }
 
@@ -49,7 +49,7 @@ public class RegistrationService {
         User user = userRepository.findByVerificationToken(verificationToken);
         if (user != null) {
             user.setActive(true);
-            user.setVerificationToken(null); // Clear the verification token once it's verified.
+            user.setVerificationToken(null);
             userRepository.save(user);
             return true;
         }

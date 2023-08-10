@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 
 @RestController
@@ -38,7 +38,7 @@ public class HostController {
     @PostMapping("/create-quiz")
     public ModelAndView createQuiz(Quiz quiz) {
         for (Question question : quiz.getQuestions()) {
-            question.setQuiz(quiz); // Set the quiz for each question
+            question.setQuiz(quiz);
         }
 
         hostService.createQuiz(quiz);

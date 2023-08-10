@@ -36,7 +36,7 @@ public class HomeController {
     private JavaMailSender javaMailSender;
     @GetMapping("/register")
     public  ModelAndView showRegistrationForm(Model model) {
-        model.addAttribute("user", new SignUpPageDto()); // Create a SignUpPageDto class to hold the form data
+        model.addAttribute("user", new SignUpPageDto());
         return new ModelAndView("SignupForm");
     }
 
@@ -73,13 +73,13 @@ public class HomeController {
     public ModelAndView processChangePassword( String email, @RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword") String newPassword, Model model) {
         User existingUser = userRepository.findByEmail(email);
         if (existingUser != null) {
-            // Check if the old password matches the stored password
+
             if (passwordEncoder.matches(oldPassword, existingUser.getPassword())) {
-                // Encrypt the new password and set it in the user entity
+
                 String encryptedPassword = passwordEncoder.encode(newPassword);
                 existingUser.setPassword(encryptedPassword);
 
-                // Save the updated user entity with the new password
+
                 userRepository.save(existingUser);
 
                 model.addAttribute("successMessage", "Password changed successfully!");

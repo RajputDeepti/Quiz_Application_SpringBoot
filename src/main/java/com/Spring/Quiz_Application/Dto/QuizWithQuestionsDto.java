@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class QuizWithQuestionsDto {
     private String quizKey;
-    private List<QuestionDto> questions; // Use a list of QuestionDto objects
+    private List<QuestionDto> questions;
 }
 
 

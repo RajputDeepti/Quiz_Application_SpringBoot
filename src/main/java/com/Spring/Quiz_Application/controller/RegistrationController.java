@@ -55,12 +55,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
     @GetMapping("/verificationSuccess")
     public String verificationSuccess() {
-        return "verificationSuccess"; // You can create a new HTML template for this page with a success message.
+        return "verificationSuccess";
     }
 
     @GetMapping("/verificationError")
     public String verificationError() {
-        return "verificationError"; // You can create a new HTML template for this page with an error message.
+        return "verificationError";
     }
 
     @GetMapping("/verify")
