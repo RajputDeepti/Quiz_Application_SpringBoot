@@ -35,19 +35,17 @@ public class SecurityConfiguration{
                         .anyRequest().authenticated())
                         .formLogin(form->form.loginPage("/signin")
                                 .loginProcessingUrl("/do-login")
-//                                .failureUrl("/authenticationFailed")
                                 .defaultSuccessUrl("/").permitAll())
                 .logout(logout->logout.permitAll())
-                .exceptionHandling(e->e.accessDeniedHandler(accessDeniedHandler()));// Set the custom AccessDeniedHandler
+                .exceptionHandling(e->e.accessDeniedHandler(accessDeniedHandler()));
         return http.build();
     }
 
 
     private AccessDeniedHandler accessDeniedHandler() {
         return (request, response, accessDeniedException) -> {
-            // Handle the access denied scenario here
             response.sendRedirect("/access-denied");
-        };// Set the custom access denied page URL
+        };
 
 
     }
