@@ -19,7 +19,6 @@ public class RegistrationService {
     @Autowired
     private PasswordEncoder passwordEncoder;
     public boolean isEmailAlreadyRegistered(String email) {
-        // Check if the email is already registered in the database
         return userRepository.existsByEmail(email);
     }
     public String register(SignUpPageDto signUpPageDto)
@@ -36,12 +35,10 @@ public class RegistrationService {
         signUpPageDto.setVerificationToken(verificationToken);
         user.setVerificationToken(signUpPageDto.getVerificationToken());
         user.setActive(signUpPageDto.isActive());
-        // Set the active status to false during registration
 
         userRepository.save(user);
         sendVerificationEmail(signUpPageDto.getEmail(), verificationToken);
 
-        // Redirect to a success page or login page
         return "home";
     }
 
