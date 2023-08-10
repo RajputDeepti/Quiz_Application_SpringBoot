@@ -20,13 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
     public class RegistrationController {
     @Autowired
     private RegistrationService registrationService;
-
-
-
-
-
         @Autowired
-        private CustomMailSender mailSender;
+     private CustomMailSender mailSender;
+        
     @PostMapping("/registration")
     public String processRegistrationForm(@ModelAttribute("user") @Valid SignUpPageDto signUpPageDto, Model model, BindingResult result) {
         if (result.hasErrors()) {
@@ -46,22 +42,18 @@ import org.springframework.web.bind.annotation.RequestParam;
         } else {
             model.addAttribute("errorMessage", "An error occurred during registration.");
         }
-
-
-
         return "SignupForm";
 
     }
 
     @GetMapping("/verificationSuccess")
     public String verificationSuccess() {
-        return "verificationSuccess"; // You can create a new HTML template for this page with a success message.
+        return "verificationSuccess";
     }
 
     @GetMapping("/verificationError")
     public String verificationError() {
-        return "verificationError"; // You can create a new HTML template for this page with an error message.
-    }
+        return "verificationError"; 
 
     @GetMapping("/verify")
     public String verifyEmail(@RequestParam("token") String verificationToken) {
