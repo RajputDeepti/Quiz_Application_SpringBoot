@@ -53,7 +53,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
     @GetMapping("/verificationError")
     public String verificationError() {
-        return "verificationError"; 
+        return "verificationError";
+    }
 
     @GetMapping("/verify")
     public String verifyEmail(@RequestParam("token") String verificationToken) {

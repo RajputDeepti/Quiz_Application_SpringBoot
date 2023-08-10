@@ -12,12 +12,12 @@ public class CustomUserDetails implements UserDetails {
     private User user;
 
     public CustomUserDetails(User user) {
-       this.user=user;
+        this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority simpleGrantedAuthority=new SimpleGrantedAuthority(user.getRole());
+        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(user.getRole());
         return List.of(simpleGrantedAuthority);
     }
 
