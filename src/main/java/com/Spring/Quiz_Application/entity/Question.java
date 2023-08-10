@@ -48,6 +48,7 @@ public class Question {
 
     @NotBlank
     private String ans;
+    private String selectedOption;
 
     @ManyToOne
     @JoinColumn(name = "quiz_key")

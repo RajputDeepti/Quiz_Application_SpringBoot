@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" >
 <head>
+  <meta charset="UTF-8">
+  <title>Quiz Submitted</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
@@ -16,7 +18,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
         }
 
         .content {
@@ -70,32 +72,9 @@
 <body>
 <div class="container">
   <div class="content">
-    <h1>Get Quiz by ID</h1>
-    <form th:action="@{/host/fetch-quiz-result}" method="get">
-      <label for="quizId">Enter Quiz ID: </label>
-      <input type="text" id="quizId" name="quizId">
-      <button type="submit" class="continue-button">Fetch Quiz</button>
-    </form>
-
-    <div th:if="${error}" class="error-message">
-      Invalid Quiz ID. Please enter a valid ID.
-    </div>
-
-    <!-- Display quiz details if quizDto is not null -->
-    <div th:if="${quizDto != null}">
-      <h2 th:text="${quizDto.quizKey}"></h2>
-      <ul>
-        <li th:each="question : ${quizDto.questions}">
-          <p th:text="${question.text}"></p>
-          <ul>
-            <li th:each="option : ${question.options}">
-              <p th:text="${option.text}"></p>
-            </li>
-          </ul>
-          <p>Answer: <span th:text="${question.answer}"></span></p>
-        </li>
-      </ul>
-    </div>
+    <h4>QUIZ SUBMITTED</h4>
+    <p>Your quiz has been submitted successfully. Thank you for participating!</p>
+    <a href="/candidate/dashboard" class="btn-success">Back to Dashboard</a>
   </div>
 </div>
 </body>

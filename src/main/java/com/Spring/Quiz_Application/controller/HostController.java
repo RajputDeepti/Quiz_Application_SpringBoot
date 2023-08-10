@@ -25,10 +25,6 @@ import java.util.stream.Collectors;
 public class HostController {
     @Autowired
     private HostService hostService;
-
-
-
-
     @GetMapping("/create-quiz")
     public ModelAndView showCreateQuizForm(Model model) {
         Quiz quiz = new Quiz();
@@ -82,6 +78,4 @@ public class HostController {
 
         return new ModelAndView("get_quiz_by_id_form");
     }
-
-
 }
