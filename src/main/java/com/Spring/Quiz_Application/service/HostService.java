@@ -13,13 +13,17 @@ public class HostService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
+
     private QuizRepository quizRepository;
-    public Quiz createQuiz(Quiz quiz) {
-        return quizRepository.save(quiz);
+
+
+
+    public void createQuiz(Quiz quiz) {
+        quizRepository.save(quiz);
     }
 
-    public Quiz getQuizById(Long id) {
-        return quizRepository.findById(id).orElse(null);
+    public Quiz getQuizById(String key) {
+        return quizRepository.findById(key).orElse(null);
     }
 
     public List<Quiz> getAllQuiz() {

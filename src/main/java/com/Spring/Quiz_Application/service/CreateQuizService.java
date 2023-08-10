@@ -15,12 +15,12 @@ public class CreateQuizService {
     private QuestionRepository questionRepository;
     public void quizCreate(Quiz quiz) {
         Quiz quiz1= new Quiz();
-        quiz1.setQuizKey(quiz.getQuizKey());
+        quiz1.setQuizKey((quiz.getQuizKey()));
         quizRepository.save(quiz1);
     }
 
     public Question addQues(Question question) {
-        Quiz quiz=quizRepository.findById(question.getQuiz().getId()).orElse(null);
+        Quiz quiz=quizRepository.findById(question.getQuiz().getQuizKey()).orElse(null);
         if(quiz==null)
         {
             throw new IllegalArgumentException("Quiz not found");

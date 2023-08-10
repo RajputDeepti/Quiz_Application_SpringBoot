@@ -46,9 +46,7 @@ public class Question {
     @NotBlank
     private String ans;
 
-
-
     @ManyToOne
-    @JoinColumn(name = "quiz_id")
+    @JoinColumn(name = "quiz_key")
     private Quiz quiz;
 }
