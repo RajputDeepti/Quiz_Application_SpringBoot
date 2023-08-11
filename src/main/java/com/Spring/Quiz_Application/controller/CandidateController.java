@@ -2,7 +2,6 @@ package com.Spring.Quiz_Application.controller;
 
 import com.Spring.Quiz_Application.entity.Question;
 import com.Spring.Quiz_Application.entity.Quiz;
-import com.Spring.Quiz_Application.service.CandidateService;
 import com.Spring.Quiz_Application.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,8 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class CandidateController {
-    @Autowired
-    private CandidateService candidateService;
     @Autowired
     private QuizService quizService;
     @GetMapping("/attemptQuiz")
@@ -38,6 +35,7 @@ public class CandidateController {
 
     @PostMapping("/submit-quiz")
     public ModelAndView submitQuiz(@ModelAttribute("quiz") Quiz quiz) {
+        //quizService.submitQuiz(quiz);
         return new ModelAndView("quiz_submitted");
     }
 

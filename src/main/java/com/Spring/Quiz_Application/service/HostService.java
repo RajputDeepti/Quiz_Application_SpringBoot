@@ -16,8 +16,6 @@ public class HostService {
 
     private QuizRepository quizRepository;
 
-
-
     public void createQuiz(Quiz quiz) {
         quizRepository.save(quiz);
     }
