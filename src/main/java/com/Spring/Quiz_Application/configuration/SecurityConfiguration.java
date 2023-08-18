@@ -35,7 +35,7 @@ public class SecurityConfiguration{
                         .anyRequest().authenticated())
                         .formLogin(form->form.loginPage("/signin")
                                 .loginProcessingUrl("/do-login")
-//                                .failureUrl("/authenticationFailed")
+//                               .failureUrl("/authenticationFailed")
                                 .defaultSuccessUrl("/").permitAll())
                 .logout(logout->logout.permitAll())
                 .exceptionHandling(e->e.accessDeniedHandler(accessDeniedHandler()));

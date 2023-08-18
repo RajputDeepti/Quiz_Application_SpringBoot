@@ -11,6 +11,11 @@ public class QuizService {
     private QuizRepository quizRepository;
 
     public Quiz getQuizByQuizKey(String quizKey) {
+
         return quizRepository.findByQuizKey(quizKey);
+    }
+    public void submitQuiz(Quiz quiz){
+
+
     }
 }

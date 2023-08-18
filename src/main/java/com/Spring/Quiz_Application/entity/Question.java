@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 
@@ -58,7 +59,14 @@ public class Question {
         return question;
     }
 
+
+
     public List<String> getOptions() {
         return Arrays.asList(option1, option2, option3, option4);
     }
+    public void setSelectedOption(String selectedOption) {
+        this.selectedOption = selectedOption;
+    }
+
+
 }

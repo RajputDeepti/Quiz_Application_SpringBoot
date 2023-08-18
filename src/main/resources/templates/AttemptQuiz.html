@@ -70,10 +70,11 @@
     </style>
 </head>
 <body>
+
 <div class="container">
     <div class="content">
         <h4>ATTEMPT QUIZ</h4>
-        <form th:action="@{/attemptingQuiz}" th:object="${quiz}" method="get">
+        <form th:action="@{/candidate/attemptingQuiz}" method="get">
             <div class="form-group">
                 <label class="control-label" for="quizId">Enter Quiz Key</label>
                 <input id="quizId" class="form-control" type="text" name="quizKey" required autofocus="autofocus"/>
@@ -82,7 +83,11 @@
                 <button type="submit" class="btn-success">Are you Ready?</button>
             </div>
         </form>
+
+        <!-- Display error message if present -->
+        <p th:if="${errorMessage}" class="failed" th:text="${errorMessage}"></p>
     </div>
 </div>
+
 </body>
 </html>

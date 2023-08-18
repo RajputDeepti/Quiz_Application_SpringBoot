@@ -16,6 +16,7 @@ import java.util.List;
 public class Quiz {
     @Id
     private String quizKey;
+
     @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
     private List<Question> questions=new ArrayList<>();
 

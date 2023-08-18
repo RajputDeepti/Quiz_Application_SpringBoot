@@ -56,6 +56,7 @@ public class RegistrationService {
         return false;
     }
     private String generateVerificationToken() {
+
         return UUID.randomUUID().toString();
     }
     private void sendVerificationEmail(String email, String verificationToken) {

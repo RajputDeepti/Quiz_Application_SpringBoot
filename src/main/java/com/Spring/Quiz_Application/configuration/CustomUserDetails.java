@@ -48,6 +48,10 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        boolean isActive= user.isActive();
+        if(isActive){
+            return true;
+        }
+        else return false;
     }
 }
