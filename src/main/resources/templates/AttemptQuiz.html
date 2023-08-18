@@ -82,6 +82,8 @@
                 <button type="submit" class="btn-success">Are you Ready?</button>
             </div>
         </form>
+
+        <p th:if="${errorMessage}" class="failed" th:text="${errorMessage}"></p>
     </div>
 </div>
 </body>

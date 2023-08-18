@@ -18,7 +18,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
         }
 
         .content {
@@ -67,9 +67,23 @@
         .btn-success:hover {
             background-color: #0056b3;
         }
+
+        .timer-container {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: rgb(251, 105, 98);
+  }
+
+   #timer {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 2px solid rgb(251, 105, 98);
+    border-radius: 5px;
+    background-color: white;
+  }
     </style>
 </head>
-<body>
 <body>
 <div class="container">
   <div class="content">
@@ -77,28 +91,78 @@
     <form th:action="@{/submit-quiz}" th:object="${quiz}" method="post">
       <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 
-      <!-- Display quiz questions -->
-      <div th:each="question, questionStatus : *{questions}">
-        <h5>Question [[${questionStatus.index + 1}]]:</h5>
-        <p th:text="${question.question}"></p>
-        <label>
-          <input type="radio" th:field="*{questions[__${questionStatus.index}__].selectedOption}" value="option1"/> [[${question.option1}]]
-        </label><br/>
-        <label>
-          <input type="radio" th:field="*{questions[__${questionStatus.index}__].selectedOption}" value="option2"/> [[${question.option2}]]
-        </label><br/>
-        <label>
-          <input type="radio" th:field="*{questions[__${questionStatus.index}__].selectedOption}" value="option3"/> [[${question.option3}]]
-        </label><br/>
-        <label>
-          <input type="radio" th:field="*{questions[__${questionStatus.index}__].selectedOption}" value="option4"/> [[${question.option4}]]
-        </label><br/><br/>
+      <div class="timer-container">
+        <span id="timer">1:00</span>
       </div>
 
-      <button type="submit" class="btn-success">Submit Quiz</button>
+      <div th:with="currentQuestion=${questions[__${currentQuestionIndex}__]}">
+        <h5>Question [[${currentQuestionIndex + 1}]]:</h5>
+        <p th:text="${currentQuestion.question}"></p>
+
+        <div th:if="${currentQuestion != null}">
+          <label>
+            <input type="radio" name="questions[__${currentQuestionIndex}__].selectedOption"
+                   th:value="${currentQuestion != null ? currentQuestion.option1 : ''}" />
+            [[${currentQuestion.option1}]]
+          </label><br/>
+          <label>
+            <input type="radio" name="questions[__${currentQuestionIndex}__].selectedOption"
+                   th:value="${currentQuestion != null ? currentQuestion.option2 : ''}" />
+            [[${currentQuestion.option2}]]
+          </label><br/>
+          <label>
+            <input type="radio" name="questions[__${currentQuestionIndex}__].selectedOption"
+                   th:value="${currentQuestion != null ? currentQuestion.option3 : ''}" />
+            [[${currentQuestion.option3}]]
+          </label><br/>
+          <label>
+            <input type="radio" name="questions[__${currentQuestionIndex}__].selectedOption"
+                   th:value="${currentQuestion != null ? currentQuestion.option4 : ''}" />
+            [[${currentQuestion.option4}]]
+          </label><br/><br/>
+        </div>
+      </div>
+
+      <div th:if="${currentQuestionIndex + 1 < questions.size()}">
+        <a th:href="@{/attemptingQuiz(quizKey=${quizKey}, currentQuestionIndex=${currentQuestionIndex + 1}, selectedOption=${currentQuestion != null ? currentQuestion.selectedOption : ''}, timeTaken=${formattedTime})}">
+          <button type="button" class="btn-success">Next</button>
+        </a>
+      </div>
+
+      <div th:if="${currentQuestionIndex + 1 == questions.size()}">
+        <button type="submit" class="btn-success">Submit Quiz</button>
+      </div>
     </form>
+
   </div>
 </div>
-</body>
+<script th:inline="javascript">
+  const timerElement = document.getElementById("timer");
+  let timeRemaining = 60;
+  let timerInterval;
+
+  function updateTimer() {
+    const minutes = Math.floor(timeRemaining / 60);
+    const seconds = timeRemaining % 60;
+    const formattedTime = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    timerElement.textContent = formattedTime;
+
+    if (timeRemaining <= 0) {
+      clearInterval(timerInterval);
+      const nextButton = document.querySelector(".btn-success");
+      if (nextButton) {
+        nextButton.click();
+      }
+    } else {
+      timeRemaining--;
+    }
+  }
+  timerInterval = setInterval(updateTimer, 1000);
+
+  const submitButton = document.querySelector('[type="submit"]');
+  if (submitButton) {
+    submitButton.addEventListener("click", () => clearInterval(timerInterval));
+  }
+</script>
 </body>
 </html>

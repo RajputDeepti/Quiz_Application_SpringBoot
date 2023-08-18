@@ -48,7 +48,11 @@ public class Question {
 
     @NotBlank
     private String ans;
+
+
     private String selectedOption;
+
+    private int time_taken;
 
     @ManyToOne
     @JoinColumn(name = "quiz_key")
@@ -60,5 +64,13 @@ public class Question {
 
     public List<String> getOptions() {
         return Arrays.asList(option1, option2, option3, option4);
+    }
+
+    public int getTimeTaken() {
+        return time_taken;
+    }
+
+    public void setTimeTaken(int timeTaken) {
+        this.time_taken = timeTaken;
     }
 }
